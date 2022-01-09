@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
+from copy import copy, deepcopy
 
 
 @dataclass
@@ -47,6 +48,7 @@ class Student(Person, Player):
         self.group_name = group_name
         self.email = email
         self.grades = None
+        self.__priv_att = 6
         Person.__init__(self, name, age, *extra_args)
 
     def display(self):
@@ -132,20 +134,23 @@ python_subject = TeachingSubject('Python')
 
 teacher1 = Teacher('Lafaiet', 30, 'master', [python_subject], 100, 'Brazilian', 'M')
 
-
 coord1 = Coordinator('Salome', 25, ['python9'], 800, 'Polish', 'F')
-
 
 my_body = Body(178, 87)
 
-print(my_body)
-
-print(my_body.bmi())
-
 your_body = Body(178, 87)
 
-print(my_body==your_body)
+student_1.pets = ['dog', 'cat']
 
+student_1_copy = deepcopy(student_1)
+student_1_copy.pets[0] = 'lion'
+student_1_copy.name = 'Putin'
+student_1_copy.display()
+print(student_1_copy.pets)
+
+
+student_1.display()
+print(student_1.pets)
 
 
 
