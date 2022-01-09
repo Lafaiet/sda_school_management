@@ -44,11 +44,11 @@ class Player(ABC):
 
 class Student(Person, Player):
 
-    def __init__(self, name, age, group_name, email, *extra_args):
+    def __init__(self, name, age, group_name, email, fav_animal, *extra_args):
         self.group_name = group_name
         self.email = email
         self.grades = None
-        self.__priv_att = 6
+        self.fav_animal = fav_animal
         Person.__init__(self, name, age, *extra_args)
 
     def display(self):
@@ -120,8 +120,9 @@ class Coordinator(Person, Staff):
 class Subject:
     pass
 
-student_1 = Student('Ivar', 20, 'EE9', 'ivar@gmail.com','Russian', 'N')
-student_2 = Student('Andre', 25, 'EE10', 'andre@gmail.com','Russian', 'N')
+
+student_1 = Student('Ivar', 20, 'EE9', 'ivar@gmail.com', 'dog','Russian', 'N')
+student_2 = Student('Andre', 25, 'EE10', 'andre@gmail.com','cat', 'Russian', 'N')
 
 
 student_1.grades = [10, 5, 5, 7, 8, 9, 10]
@@ -140,18 +141,13 @@ my_body = Body(178, 87)
 
 your_body = Body(178, 87)
 
-student_1.pets = ['dog', 'cat']
+student_1.favorite_teacher = teacher1
 
 student_1_copy = deepcopy(student_1)
-student_1_copy.pets[0] = 'lion'
 student_1_copy.name = 'Putin'
+student_1_copy.favorite_teacher.name = 'Mike'
 student_1_copy.display()
-print(student_1_copy.pets)
-
+print(student_1.favorite_teacher.name)
 
 student_1.display()
-print(student_1.pets)
-
-
-
-
+print(student_1_copy.favorite_teacher.name)
